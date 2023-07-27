@@ -20,6 +20,7 @@ const Card : React.FC<CardProps> = ({ key, id, name, description, imageUrl, pric
         <Link href={`nft-details/${contractAddress}/${id}`}>
             <div className="relative h-64 overflow-hidden rounded-lg bg-gray-300 group">
             <Image
+                width={300} height={200} 
                 src={imageUrl}
                 alt={name}
                 className="object-cover w-full h-full transform transition-all duration-300 group-hover:scale-110 brightness-75 group-hover:brightness-100 opacity-80 group-hover:opacity-100 group-hover:text-dark"
