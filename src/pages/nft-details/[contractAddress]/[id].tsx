@@ -49,7 +49,7 @@ export default function Minter() {
   // Add dependencies to useEffect to avoid unnecessary re-renders
   useEffect(() => {
     initializeSDK();
-  }, [id, contractAddress, address]);
+  }, []);
 
   return (
     <div className="h-full">
