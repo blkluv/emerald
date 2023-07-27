@@ -24,7 +24,6 @@ export default function Minter() {
   const { checkoutOpen } = useSelector((state: RootState) => state.UI);
   const sdkRef = useRef<ThirdwebSDK | null>(null);
   const address = useAddress();
-  console.log(' address ', address );
   
   const initializeSDK = async (): Promise<void> => {
     try {
@@ -57,7 +56,7 @@ export default function Minter() {
 
   useEffect(() => {
     initializeSDK();
-  });
+  }, []);
 
   return (
     <>
