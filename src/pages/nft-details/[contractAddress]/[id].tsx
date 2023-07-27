@@ -56,7 +56,7 @@ export default function Minter() {
 
   useEffect(() => {
     initializeSDK();
-  }, []);
+  });
 
   return (
     <>
