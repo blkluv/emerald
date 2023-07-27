@@ -57,7 +57,7 @@ export default function Minter() {
 
   useEffect(() => {
     initializeSDK();
-  }, [id, address]);
+  });
 
   return (
     <>
