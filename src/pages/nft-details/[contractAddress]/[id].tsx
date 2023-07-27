@@ -59,10 +59,6 @@ export default function Minter() {
     initializeSDK();
   }, [id, address]);
 
-  useEffect(() => {
-    initializeSDK();
-  });
-
   return (
     <>
       <div className="h-full"> {/* Use h-screen class here */}
