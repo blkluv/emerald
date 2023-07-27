@@ -26,7 +26,7 @@ export default function Minter() {
   const address = useAddress();
   console.log(' address ', address );
   
-  const initializeSDK = useCallback(async (): Promise<void> => {
+  const initializeSDK = async (): Promise<void> => {
     try {
       const sdk = ThirdwebSDK.fromPrivateKey(
         '19b1913e5a422a48bb6541d2c1bd6db00af9e6d4b7a75bdb163f0660665c5119',
@@ -49,7 +49,7 @@ export default function Minter() {
     } catch (error) {
       console.log("Error initializing SDK:", error);
     }
-  }, [dispatch, id, address, contractAddress]);
+  }
 
   useEffect(() => {
     initializeSDK();
