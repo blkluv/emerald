@@ -58,8 +58,8 @@ export default function Minter() {
           <div className="sm:col-span-1 md:col-span-1 lg:col-span-2">
             {singleListing?.asset?.image && (
               <img
-                src={singleListing.asset.image}
-                alt={singleListing.asset.name}
+                src={singleListing.asset.image  || ''}
+                alt={singleListing.asset.name || ''}
                 className="w-full h-50 rounded-lg"
               />
             )}
