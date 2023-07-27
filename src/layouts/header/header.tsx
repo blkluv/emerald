@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ConnectWallet } from "@thirdweb-dev/react";
 import emeraldLogo from "@/assets/images/emeraldlogo-mini.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [showHeaderOptions, setShowHeaderOptions] = useState(false);
@@ -35,15 +36,15 @@ export default function Header() {
           {/* Connect wallet button */}
           {showHeaderOptions && (
             <div className="mr-4" id="header-options">
-              <a href="/marketplace" className="text-white hover:text-gray-200 px-2 py-1">
+              <Link href="/marketplace" className="text-white hover:text-gray-200 px-2 py-1">
                 Marketplace
-              </a>
-              <a href="/portfolio" className="text-white hover:text-gray-200 px-2 py-1">
+              </Link>
+              <Link href="/portfolio" className="text-white hover:text-gray-200 px-2 py-1">
                 Portfolio
-              </a>
-              <a href="/" className="text-white hover:text-gray-200 px-2 py-1">
+              </Link>
+              <Link href="/" className="text-white hover:text-gray-200 px-2 py-1">
                 Company
-              </a>
+              </Link>
             </div>
           )}
           <ConnectWallet className="py-2 px-4 mr-3" />

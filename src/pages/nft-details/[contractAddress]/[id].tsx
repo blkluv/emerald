@@ -8,6 +8,7 @@ import { RootState } from "@/app/store";
 import { Checkout } from "@/components/checkout/checkout";
 import Tabs from "@/components/card/tabs";
 import { useAddress } from "@thirdweb-dev/react";
+import Image from "next/image";
 
 
 export default function Minter() {
@@ -28,25 +29,27 @@ export default function Minter() {
   const initializeSDK = useCallback(async (): Promise<void> => {
     try {
       const sdk = ThirdwebSDK.fromPrivateKey(
-            '19b1913e5a422a48bb6541d2c1bd6db00af9e6d4b7a75bdb163f0660665c5119',
-            'mumbai'
+        '19b1913e5a422a48bb6541d2c1bd6db00af9e6d4b7a75bdb163f0660665c5119',
+        'mumbai'
       );
       const contract = await sdk.getContract(
         "0xA95122DdCDee7d1d67ee5d59D97B4940F1B4c59E"
       );
       const listing = await contract.directListings.getListing(id);
       const singleContract = await sdk.getContract(contractAddress);
-      const quantityOwned = await singleContract.erc1155.balanceOf(address, 0);
+      const quantityOwned = await singleContract.erc1155.balanceOf(address || '', 0);
       const quantityAvailable = await singleContract.erc1155.totalSupply(0);
       //console.log(' quantity available ', parseFloat(quantityOwned))
+      const owned = parseFloat(quantityOwned.toString());
+      const available = parseFloat(quantityAvailable.toString()) // Convert BigNumber to string before using parseFloat
       dispatch(onChangeSingleListing(listing));
-      dispatch(onChangeQuantityOwned( parseFloat(quantityOwned)))
-      dispatch(onChangeQuantityAvailable(parseFloat(quantityAvailable)))
+      dispatch(onChangeQuantityOwned(owned || 0));
+      dispatch(onChangeQuantityAvailable(available || 0));
 
     } catch (error) {
       console.log("Error initializing SDK:", error);
     }
-  }, [dispatch, id]);
+  }, [dispatch, id, address, contractAddress]);
 
   useEffect(() => {
     initializeSDK();
@@ -59,9 +62,9 @@ export default function Minter() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-5">
             
             <div className="sm:col-span-1 md:col-span-1 lg:col-span-2">
-              <img
+              <Image
                 src={singleListing?.asset.image || ""}
-                alt={singleListing?.asset.name || ""}
+                alt={""}
                 className="w-full h-50 rounded-lg"
               />
             </div>

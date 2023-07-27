@@ -29,7 +29,7 @@ export const MarketplaceComponent = () => {
         };
         initializeSDK();
         //console.log(' listings ', listings)
-    }, []);
+    });
 
     return (
         <>
@@ -38,6 +38,7 @@ export const MarketplaceComponent = () => {
                     {
                         listings?.map((nft) => (
                             <Card 
+                                key={nft.id}
                                 id={Number(nft.id)} 
                                 name={nft.asset.name} 
                                 description={nft.asset.description} 

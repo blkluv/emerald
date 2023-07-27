@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; // Import the icons
 import emeraldLogo from "@/assets/images/emeraldlogo-mini.png";
 import Image from "next/image";
+import Link from "next/link";
 
 const Sidebar = ({ className }: { className?: string }) => {
   const [collapsed, setCollapsed] = useState(false);
@@ -35,15 +36,15 @@ const Sidebar = ({ className }: { className?: string }) => {
           </button>
         </div>
         <div className={`py-4 px-2 ${collapsed ? "pl-8" : ""}`}>
-          <a href="/marketplace" className="block text-white my-2 hover:bg-gold hover:text-black rounded-full py-2 px-4">
+          <Link href="/marketplace" className="block text-white my-2 hover:bg-gold hover:text-black rounded-full py-2 px-4">
             Marketplace
-          </a>
-          <a href="/portfolio" className="block text-white my-2 hover:bg-gold hover:text-black rounded-full py-2 px-4">
+          </Link>
+          <Link href="/portfolio" className="block text-white my-2 hover:bg-gold hover:text-black rounded-full py-2 px-4">
             Portfolio
-          </a>
-          <a href="/link3" className="block text-white my-2 hover:bg-gold hover:text-black rounded-full py-2 px-4">
+          </Link>
+          <Link href="/link3" className="block text-white my-2 hover:bg-gold hover:text-black rounded-full py-2 px-4">
             Company
-          </a>
+          </Link>
         </div>
       </div>
       {/* Handlebar */}

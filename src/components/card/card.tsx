@@ -1,6 +1,9 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface CardProps {
+    key : string;
     id : number;
     name : string;
     description : string;
@@ -9,14 +12,14 @@ interface CardProps {
     contractAddress : string;
 }
 
-const Card : React.FC<CardProps> = ({ id, name, description, imageUrl, price, contractAddress }) => {
+const Card : React.FC<CardProps> = ({ key, id, name, description, imageUrl, price, contractAddress }) => {
   
 
   return (
-    <div className="">
-        <a href={`nft-details/${contractAddress}/${id}`}>
+    <div className="" id={key}>
+        <Link href={`nft-details/${contractAddress}/${id}`}>
             <div className="relative h-64 overflow-hidden rounded-lg bg-gray-300 group">
-            <img
+            <Image
                 src={imageUrl}
                 alt={name}
                 className="object-cover w-full h-full transform transition-all duration-300 group-hover:scale-110 brightness-75 group-hover:brightness-100 opacity-80 group-hover:opacity-100 group-hover:text-dark"
@@ -27,7 +30,7 @@ const Card : React.FC<CardProps> = ({ id, name, description, imageUrl, price, co
                 capitalize">{name}</h2>
             </div>
             </div>
-        </a>
+        </Link>
   </div>
   );
 };
